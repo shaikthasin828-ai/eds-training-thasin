@@ -6,10 +6,23 @@ export default function decorate(block) {
   [...block.children].forEach((row) => {
     const li = document.createElement('li');
     while (row.firstElementChild) li.append(row.firstElementChild);
-    [...li.children].forEach((div) => {
+    /*[...li.children].forEach((div) => {
       if (div.children.length === 1 && div.querySelector('picture')) div.className = 'cards-card-image';
       else div.className = 'cards-card-body';
-    });
+    });*/
+    [...li.children].forEach((div, index) => {
+  if (div.children.length === 1 && div.querySelector('picture')) {
+    div.className = 'cards-card-image';
+  } else {
+    div.className = 'cards-card-body';
+
+    if (index === 0) {
+      const title = document.createElement('h3');
+      title.textContent = div.textContent.trim();
+      div.replaceChildren(title);
+    }
+  }
+});
     ul.append(li);
   });
   ul.querySelectorAll('picture > img').forEach((img) => img.closest('picture').replaceWith(createOptimizedPicture(img.src, img.alt, false, [{ width: '750' }])));
