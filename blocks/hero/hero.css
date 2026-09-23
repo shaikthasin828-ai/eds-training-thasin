@@ -44,9 +44,7 @@
   position: relative;
   padding: 80px 24px;
   min-height: 420px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: block;
   text-align: center;
   background: #1f6f8b;
   border-radius: 0 0 24px 24px;
